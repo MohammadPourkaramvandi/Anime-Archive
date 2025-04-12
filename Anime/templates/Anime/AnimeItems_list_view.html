@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/item-list.css' %}">
+    <title>List</title>
+</head>
+<body>
+    
+    <div style="margin: 50px;">
+        <div class="anime-list-container">
+            
+            {% for item in AnimeItems %}
+            <div class="anime-list-item">
+                <div class="anime-list-image-div">
+                    {% if item.anime_picture %}
+                    <img src="{{ item.anime_picture.url }}" alt="">
+                    {% else %}
+                    <img src="" alt="">
+                    {% endif %}
+                </div>
+                <div class="anime-list-item-name-p">
+                    <div class="anime-list-item-name">
+                        <p>{{ item.title }}</p>
+                    </div>
+                </div>
+                <div class="anime-list-item-seasone">
+                    <p>Seasone : {{ item.seasone }}</p>
+                </div>
+                <div class="anime-list-item-episod">
+                    <p>Episode : {{ item.episod }}</p>
+                </div>
+                <a class="button" href="{{ item.get_absolute_url }}">
+                    Edit
+                </a>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    
+</body>
+</html>
